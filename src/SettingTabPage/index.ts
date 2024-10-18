@@ -1,7 +1,7 @@
 import { App, PluginSettingTab } from "obsidian";
 import { createApp } from "vue";
-import SamplePlugin from "./main";
-import SampleSettingTabPage from "./SettingTabPage.vue";
+import SamplePlugin from "../main";
+import SampleSettingTabPage from "./index.vue";
 
 
 export class SampleSettingTab extends PluginSettingTab {

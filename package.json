@@ -1,9 +1,11 @@
 {
-    "name": "obsidian-vue-sample-plugin",
+    "name": "obsidian-search-pdf",
     "version": "1.0.0",
-    "description": "This is a Vue sample plugin for Obsidian.",
-    "keywords": ["obsidian-plugin"],
-    "author": "Obsidian",
+    "description": "搜索pdf内容",
+    "keywords": [
+        "obsidian-plugin-search-pdf"
+    ],
+    "author": "Huangwj",
     "license": "MIT",
     "main": "main.js",
     "scripts": {
@@ -12,11 +14,16 @@
         "build": "tsc --noEmit --skipLibCheck && node esbuild.config.mjs release"
     },
     "devDependencies": {
-        "obsidian": "^1.3.5",
-        "typescript": "^5.1.6",
-        "vue": "^3.3.4",
+        "@types/pdf-parse": "^1.1.4",
+        "builtin-modules": "^3.3.0",
         "esbuild": "^0.18.17",
         "esbuild-plugin-vue3": "^0.3.2",
-        "builtin-modules": "^3.3.0"
+        "obsidian": "^1.3.5",
+        "typescript": "^5.1.6",
+        "vue": "^3.3.4"
+    },
+    "dependencies": {
+        "@cantoo/pdf-lib": "^2.2.3",
+        "pdf-parse": "^1.1.1"
     }
 }

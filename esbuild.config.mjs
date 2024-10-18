@@ -4,6 +4,7 @@ import builtinModules from "builtin-modules";
 import process from "process";
 import fs from "fs";
 
+const outFileName = "../search-pdf/"
 /**
  * 决定是否以发布模式进行打包.
  * - 运行 `npm run build` 或 `node esbuild.config.mjs release` 时: `true`.
@@ -57,7 +58,7 @@ const esbuildContext = await esbuild.context({
         "@lezer/lr",
         ...builtinModules
     ],
-    outfile: "./plugin/main.js",
+    outfile: outFileName +"main.js",
     // 在输出文件的开头插入指定的字符串.
     banner: {
         js: jsBanner,
@@ -81,7 +82,7 @@ if (release) {
      * 因为 ESbuild 会自动将 CSS 输出文件名指定为与 JavaScript 输出文件名相同, 所以您必须在此处重命名 CSS 输出文件.
      */
     await esbuildContext.rebuild();
-    fs.rename("./plugin/main.css", "./plugin/styles.css", (err) => {
+    fs.rename( outFileName + "main.css", outFileName + "styles.css", (err) => {
         if (err) {
             throw err;
         }
@@ -96,10 +97,10 @@ if (release) {
      * 因为 ESbuild 会自动将 CSS 输出文件名指定为与 JavaScript 输出文件名相同, 所以您必须在此处重命名 CSS 输出文件.
      */
     await esbuildContext.watch();
-    fs.watchFile("./plugin/main.css", () => {
-        fs.access("./plugin/main.css", fs.constants.F_OK, (err) => {
+    fs.watchFile(outFileName + "main.css", () => {
+        fs.access(outFileName + "main.css", fs.constants.F_OK, (err) => {
             if (!err) {
-                fs.rename("./plugin/main.css", "./plugin/styles.css", (err) => {
+                fs.rename(outFileName + "main.css", outFileName + "styles.css", (err) => {
                     if (err) {
                         throw err;
                     }
